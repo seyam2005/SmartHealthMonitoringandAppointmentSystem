@@ -1,6 +1,5 @@
 package com.mycompany.smarthealthmonitoringandappointmentsystem;
 
-
 import java.net.URL;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -19,15 +18,15 @@ public class App extends Application {
     }
 
     // 🔥 CSS add method
-    public static void addCSS(Scene scene){
+    public static void addCSS(Scene scene) {
         var css_url = App.class.getResource("styles.css");
-        if(css_url != null){
+        if (css_url != null) {
             scene.getStylesheets().add(css_url.toExternalForm());
         }
     }
 
     // 🔥 Scene create method (BEST PRACTICE)
-    public static Scene createScene(Parent root){
+    public static Scene createScene(Parent root) {
         Scene scene = new Scene(root, 640, 480);
         addCSS(scene);
         return scene;
