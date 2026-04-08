@@ -12,7 +12,7 @@ public class HealthService {
 
     public void saveRecord(HealthRecord hr){
         System.out.println("Saved Heart Rate: " + hr.getHeartRate());
-        System.out.println("Saved Temperature: " + hr.getTemperature() +hr.getBloodPressure());
+        System.out.println("Saved Temperature: " + hr.getTemperature());
         System.out.println("Saved Blood Pressure " +hr.getBloodPressure());
     }
 }
