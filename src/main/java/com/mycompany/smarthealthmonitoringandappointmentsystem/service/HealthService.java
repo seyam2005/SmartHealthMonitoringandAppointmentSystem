@@ -4,15 +4,13 @@
  */
 package com.mycompany.smarthealthmonitoringandappointmentsystem.service;
 
-
-
 import com.mycompany.smarthealthmonitoringandappointmentsystem.model.HealthRecord;
 
 public class HealthService {
 
-    public void saveRecord(HealthRecord hr){
+    public void saveRecord(HealthRecord hr) {
         System.out.println("Saved Heart Rate: " + hr.getHeartRate());
         System.out.println("Saved Temperature: " + hr.getTemperature());
-        System.out.println("Saved Blood Pressure " +hr.getBloodPressure());
+        System.out.println("Saved Blood Pressure: " + hr.getBloodPressure());
     }
 }

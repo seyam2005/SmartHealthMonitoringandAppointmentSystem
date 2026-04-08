@@ -77,16 +77,25 @@ public class DashboardView extends VBox {
         }
 
         // Temperature Check
-        if (temp > 37.5) {
+        if (temp > 100) {
             message += "⚠ High Temperature!\n";
             isWarning = true;
         }
 
         // Blood Pressure Check (simple)
-        if (bp.contains("140") || bp.contains("150")) {
+        if (bp != null && bp.contains("/")) {
+    try {
+        String[] parts = bp.split("/");
+        int sys = Integer.parseInt(parts[0]);
+
+        if (sys >= 140) {
             message += "⚠ High Blood Pressure!\n";
             isWarning = true;
         }
+    } catch(Exception ex){
+        message += "Invalid BP format!\n";
+    }
+}
 
         // Final Output
         if (isWarning) {

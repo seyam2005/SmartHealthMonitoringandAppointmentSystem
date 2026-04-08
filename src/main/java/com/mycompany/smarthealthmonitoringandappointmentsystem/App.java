@@ -14,7 +14,7 @@ public class App extends Application {
         HomeView homeView = new HomeView(stage);
         Scene scene = createScene(homeView); // use our method
         stage.setScene(scene);
-        stage.setTitle("Smart Health System");
+        stage.setTitle("Smart Health System with JavaFx Powered by Seyam");
         stage.show();
     }
 
