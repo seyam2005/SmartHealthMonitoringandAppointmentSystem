@@ -24,7 +24,6 @@ public class App extends Application {
             scene.getStylesheets().add(css_url.toExternalForm());
         }
     }
-    
     // 🔥 Scene create method (BEST PRACTICE)
     public static Scene createScene(Parent root) {
         Scene scene = new Scene(root, 640, 480);
