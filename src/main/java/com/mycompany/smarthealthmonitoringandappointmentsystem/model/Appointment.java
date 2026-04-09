@@ -11,7 +11,6 @@ public class Appointment {
     private String patientName;
     private String doctorName;
     private String date;
-
     public String getPatientName() {
         return patientName;
     }
