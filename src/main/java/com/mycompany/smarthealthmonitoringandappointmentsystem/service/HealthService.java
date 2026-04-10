@@ -6,7 +6,7 @@ package com.mycompany.smarthealthmonitoringandappointmentsystem.service;
 
 import com.mycompany.smarthealthmonitoringandappointmentsystem.model.HealthRecord;
 
-public class HealthService {
+public class HealthService { 
 
     public void saveRecord(HealthRecord hr) {
         System.out.println("Saved Heart Rate: " + hr.getHeartRate());
