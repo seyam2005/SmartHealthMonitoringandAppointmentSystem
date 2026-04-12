@@ -1,2 +1,59 @@
-# SmartHealthMonitoringandAppointmentSystem
-# SmartHealthMonitoringandAppointmentSystem
+📌 Project Overview
+
+This is a JavaFX-based Smart Health Monitoring and Appointment System developed using Object-Oriented Programming (OOP) principles.
+The system allows users to input health data, monitor conditions, and book doctor appointments.
+
+🚀 Features:
+
+.👤 Patient name input
+.❤️ Health monitoring (Heart Rate, Temperature, Blood Pressure)
+.⚠️ Automatic health condition detection
+.🧑‍⚕️ Doctor selection system
+.📅 Appointment booking with date picker
+.💾 Service layer architecture (separation of logic)
+.🎨 JavaFX UI with CSS styling
+.✨ Smooth UI animation (Fade Transition)
+
+🧠 Technologies Used
+.Java
+.JavaFX
+.OOP (Encapsulation, Inheritance, Abstraction, Polymorphism)
+.ArrayList (Data storage)
+.CSS (UI styling)
+
+com.mycompany.smarthealthmonitoringandappointmentsystem
+│
+├── model
+│   ├── HealthRecord
+│   ├── Appointment
+│   ├── Person
+│   ├── HealthResult
+│
+├── service
+│   ├── HealthService
+│   ├── AppointmentService
+│
+├── HomeView
+├── DashboardView
+├── App (Main JavaFX Entry Point)
+
+⚙️ How It Works
+1. User enters patient information
+2. Health data is analyzed by HealthService
+3. System detects abnormal conditions (heart rate, temperature, BP)
+4. User selects doctor and appointment date
+5. Appointment is stored using ArrayList
+6. Result is shown in UI with color feedback
+
+🧠 OOP Concepts Used
+1. Encapsulation → private variables with getters/setters
+2. Inheritance → JavaFX UI classes extend VBox/Application
+3. Abstraction → Service layer hides business logic
+4. Polymorphism → Method overriding in JavaFX lifecycle
+
+👨‍💻 Author
+Name: Seyam
+Institution : EAST WEST UNIVERSITY
+EWU ID : 2025-2-60-036
+Project: Academic JAVA OOP Project
+Purpose: Learning + University Mini Project
