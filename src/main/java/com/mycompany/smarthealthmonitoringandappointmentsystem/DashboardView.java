@@ -8,20 +8,20 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.animation.FadeTransition;
+import javafx.animation.FadeTransition; //animation fadeeffect
 import javafx.util.Duration;
 
-import com.mycompany.smarthealthmonitoringandappointmentsystem.model.*;
-import com.mycompany.smarthealthmonitoringandappointmentsystem.service.*;
+import com.mycompany.smarthealthmonitoringandappointmentsystem.model.*; //data class
+import com.mycompany.smarthealthmonitoringandappointmentsystem.service.*;//business logic
 
 public class DashboardView extends VBox {
 
-    public DashboardView(Stage stage, String patientName){
+    public DashboardView(Stage stage, String patientName) {
 
-        // 🔷 Title
+        // Title
         Label welcome = new Label("🏥 Smart Health Dashboard");
 
-        // 🔷 Input Fields
+        // User Input Fields
         TextField heartField = new TextField();
         heartField.setPromptText("Heart Rate");
 
@@ -31,96 +31,69 @@ public class DashboardView extends VBox {
         TextField bpField = new TextField();
         bpField.setPromptText("Blood Pressure");
 
-        // 🔷 Doctor Select
+        // Doctor Select
         ComboBox<String> doctorBox = new ComboBox<>();
         doctorBox.getItems().addAll(
-            "Dr. Rahman",
-            "Dr. Ahmed",
-            "Dr. Sara"
-        );
+                "Dr. Rahman",
+                "Dr. Ahmed",
+                "Dr. Sara");
         doctorBox.setPromptText("Select Doctor");
 
-        // 🔷 Date Picker
+        // Calendar input
         DatePicker datePicker = new DatePicker();
         datePicker.setPromptText("Select Appointment Date");
 
-        // 🔷 Buttons
+        // Buttons
         Button saveBtn = new Button("Save Health Data");
         Button appointBtn = new Button("Book Appointment");
 
-        // 🔷 Output
+        // Output
         Label output = new Label();
-        output.setWrapText(true);
+        output.setWrapText(true); // break line if text is long
         output.setMaxWidth(250);
 
-        // 🔥 Save Button Logic
-       saveBtn.setOnAction(e -> {
-    try {
-        int heart = Integer.parseInt(heartField.getText());
-        double temp = Double.parseDouble(tempField.getText());
-        String bp = bpField.getText();
+        // Save Button Logic
+        saveBtn.setOnAction(e -> {
+            try {
+                int heart = Integer.parseInt(heartField.getText());
+                double temp = Double.parseDouble(tempField.getText());
+                String bp = bpField.getText();
 
-        HealthRecord hr = new HealthRecord();
-        hr.setHeartRate(heart);
-        hr.setTemperature(temp);
-        hr.setBloodPressure(bp);
+                // model object
+                HealthRecord hr = new HealthRecord();
+                hr.setHeartRate(heart);
+                hr.setTemperature(temp);
+                hr.setBloodPressure(bp);
 
-        new HealthService().saveRecord(hr);
+                // service call
+                HealthService service = new HealthService();
+                service.saveRecord(hr);
+                HealthResult result = service.checkHealth(hr);
 
-        String message = "";
-        boolean isWarning = false;
+                // output show
+                output.setText(result.getMessage());
 
-        // Heart Check
-        if (heart > 100) {
-            message += "⚠ High Heart Rate!\n";
-            isWarning = true;
-        }
+                if (result.isWarning()) {
+                    output.setStyle("-fx-text-fill: red;");
+                } else {
+                    output.setStyle("-fx-text-fill: lightgreen;");
+                }
 
-        // Temperature Check
-        if (temp > 100) {
-            message += "⚠ High Temperature!\n";
-            isWarning = true;
-        }
+            } catch (Exception ex) {
+                output.setText("❌ Please enter valid numbers!");
+                output.setStyle("-fx-text-fill: red;");
+            }
+        });
 
-        // Blood Pressure Check (simple)
-        if (bp != null && bp.contains("/")) {
-    try {
-        String[] parts = bp.split("/");
-        int sys = Integer.parseInt(parts[0]);
-
-        if (sys >= 140) {
-            message += "⚠ High Blood Pressure!\n";
-            isWarning = true;
-        }
-    } catch(Exception ex){
-        message += "Invalid BP format!\n";
-    }
-}
-
-        // Final Output
-        if (isWarning) {
-            output.setText(message);
-            output.setStyle("-fx-text-fill: red;");
-        } else {
-            output.setText("✅ Normal Condition");
-            output.setStyle("-fx-text-fill: lightgreen;");
-        }
-
-    } catch (Exception ex) {
-        output.setText("❌ Please enter valid numbers!");
-        output.setStyle("-fx-text-fill: red;");
-    }
-});
-
-        // 🔥 Appointment Button Logic
+        // Appointment Button Logic
         appointBtn.setOnAction(e -> {
 
-            if(doctorBox.getValue() == null){
+            if (doctorBox.getValue() == null) {
                 output.setText("Select a doctor!");
                 return;
             }
 
-            if(datePicker.getValue() == null){
+            if (datePicker.getValue() == null) {
                 output.setText("Select a date!");
                 return;
             }
@@ -136,29 +109,28 @@ public class DashboardView extends VBox {
             output.setStyle("-fx-text-fill: lightgreen;");
         });
 
-        // 🔥 Card Layout
+        //  Card Layout
         VBox card = new VBox();
         card.getChildren().addAll(
-            welcome,
-            heartField,
-            tempField,
-            bpField,
-            doctorBox,
-            datePicker,
-            saveBtn,
-            appointBtn,
-            output
-        );
+                welcome,
+                heartField,
+                tempField,
+                bpField,
+                doctorBox,
+                datePicker,
+                saveBtn,
+                appointBtn,
+                output);
 
         card.setSpacing(15);
         card.setAlignment(Pos.CENTER);
         card.getStyleClass().add("card");
 
-        // 🔥 Add to main
+        //  Add to main
         this.getChildren().add(card);
         this.setAlignment(Pos.CENTER);
 
-        // 🔥 Animation
+        //  Animation
         FadeTransition ft = new FadeTransition(Duration.seconds(1), card);
         ft.setFromValue(0);
         ft.setToValue(1);

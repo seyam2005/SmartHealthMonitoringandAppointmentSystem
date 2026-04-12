@@ -17,14 +17,14 @@ public class App extends Application {
         stage.show();
     }
 
-    // 🔥 CSS add method
+    // CSS add method
     public static void addCSS(Scene scene) {
         var css_url = App.class.getResource("styles.css");
         if (css_url != null) {
             scene.getStylesheets().add(css_url.toExternalForm());
         }
     }
-    // 🔥 Scene create method (BEST PRACTICE)
+    //  Scene create method 
     public static Scene createScene(Parent root) {
         Scene scene = new Scene(root, 640, 480);
         addCSS(scene);
