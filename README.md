@@ -6,20 +6,32 @@ The system allows users to input health data, monitor conditions, and book docto
 🚀 Features
 
 👤 Patient name input
+
 ❤️ Health monitoring (Heart Rate, Temperature, Blood Pressure)
+
 ⚠️ Automatic health condition detection
+
 🧑‍⚕️ Doctor selection system
+
 📅 Appointment booking with date picker
+
 💾 Service layer architecture (separation of logic)
+
 🎨 JavaFX UI with CSS styling
+
 ✨ Smooth UI animation (Fade Transition)
 
 
 🧠 Technologies Used
+
 Java
+
 JavaFX
+
 OOP (Encapsulation, Inheritance, Abstraction, Polymorphism)
+
 ArrayList (Data storage)
+
 CSS (UI styling)
 
 
@@ -41,6 +53,7 @@ com.mycompany.smarthealthmonitoringandappointmentsystem
 ├── App (Main JavaFX Entry Point)
 
 ⚙️ How It Works
+
 User enters patient information
 Health data is analyzed by HealthService
 System detects abnormal conditions (heart rate, temperature, BP)
